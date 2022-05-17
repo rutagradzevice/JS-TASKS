@@ -8,3 +8,21 @@ pamatyti jo pateikto svorio kovertavimą į:
 Pastaba: atvaizdavimas turi būti matomas pateikus formą ir pateikiamas
 <div id="output"></div> viduje, bei turi turėti bent minimalų stilių;
 ------------------------------------------------------------------- */
+const form = document.querySelector("form");
+const log = document.getElementById("search");
+
+form.addEventListener("submit", convert);
+
+function convert(e) {
+  e.preventDefault();
+  let out = document.getElementById("output");
+  let kg = e.target[0].value;
+  console.log(e);
+  if (isNaN(kg)) {
+    out.innerText = "Įveskite skaičių";
+  } else {
+    out.innerText = `svarai: ${kg * 2.2046}, gramai: ${kg / 0.001}, uncijos: ${
+      kg * 35.274
+    }`;
+  }
+}
